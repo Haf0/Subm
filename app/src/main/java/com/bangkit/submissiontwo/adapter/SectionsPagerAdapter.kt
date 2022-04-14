@@ -1,0 +1,26 @@
+package com.bangkit.submissiontwo.adapter
+
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.bangkit.submissiontwo.FollowerFragment
+import com.bangkit.submissiontwo.FollowingFragment
+
+class SectionsPagerAdapter(activity: AppCompatActivity, bundle: Bundle) : FragmentStateAdapter(activity) {
+    private val fragmentBundle : Bundle = bundle
+    override fun createFragment(position: Int): Fragment {
+        var fragment: Fragment? = null
+        when (position) {
+            0 -> fragment = FollowingFragment()
+            1 -> fragment = FollowerFragment()
+        }
+        fragment?.arguments = fragmentBundle
+        return fragment as Fragment
+    }
+
+    override fun getItemCount(): Int {
+        return 2
+    }
+
+}
